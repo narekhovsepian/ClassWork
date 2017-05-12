@@ -1,0 +1,8 @@
+C:\Users\nhovs\Source\Repos\CafeMaps2\CafeMaps\bin\Debug\CafeMaps.exe.config
+C:\Users\nhovs\Source\Repos\CafeMaps2\CafeMaps\bin\Debug\CafeMaps.exe
+C:\Users\nhovs\Source\Repos\CafeMaps2\CafeMaps\bin\Debug\CafeMaps.pdb
+C:\Users\nhovs\Source\Repos\CafeMaps2\CafeMaps\bin\Debug\Newtonsoft.Json.dll
+C:\Users\nhovs\Source\Repos\CafeMaps2\CafeMaps\bin\Debug\Newtonsoft.Json.xml
+C:\Users\nhovs\Source\Repos\CafeMaps2\CafeMaps\obj\Debug\CafeMaps.csprojResolveAssemblyReference.cache
+C:\Users\nhovs\Source\Repos\CafeMaps2\CafeMaps\obj\Debug\CafeMaps.exe
+C:\Users\nhovs\Source\Repos\CafeMaps2\CafeMaps\obj\Debug\CafeMaps.pdb
