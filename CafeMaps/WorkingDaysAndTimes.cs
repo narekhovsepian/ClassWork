@@ -17,4 +17,7 @@
 
         public override string ToString()
         {
-            return "    " + Day + " From: " + From + " - To: " + To;Na
+            return "    " + Day + " From: " + From + " - To: " + To;
+        }
+    }
+}
