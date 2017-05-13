@@ -2,6 +2,6 @@
 	2 - Search Cafes by Cordinate Nearby
 	3 - Show Office Days And Hours
 	4 - Search Cafes by Name
+        5 - Login
 	9 - View Comments Dir
-	5 - Login
 	0 - Exit Programs

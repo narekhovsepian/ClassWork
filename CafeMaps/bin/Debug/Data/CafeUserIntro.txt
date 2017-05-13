@@ -6,4 +6,5 @@
 	6 - Remove cafe
 	7 - Rate cafe
 	8 - Log out
+	9 - View Comments Dir
 	0 - Exit Programs

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Device.Location;
 using System.IO;
+using System.Windows.Forms;
 
 namespace CafeMaps
 {
@@ -8,17 +9,24 @@ namespace CafeMaps
     {
         static void Main(string[] args)
         {
+            int k = 0;
             Cafe.ReadCafeData();
             CafeIntro();
             for (;;)
             {
+
+
                 try
                 {
+
                     int x = int.Parse(Console.ReadLine());
+
                     if (x == 1)
                     {
+                        int i = 1;
                         Cafe.SortCafe(Cafe.cafes);
-                        foreach (Cafe cafe in Cafe.cafes) { Console.WriteLine(cafe); }
+
+                        foreach (Cafe cafe in Cafe.cafes) { Console.WriteLine(i + " " + cafe); i += 1; }
                         Console.WriteLine("\n");
 
                     }
@@ -33,10 +41,17 @@ namespace CafeMaps
                         int radius = int.Parse(Console.ReadLine());
 
                         GeoCoordinate MyCordinate = new GeoCoordinate(x1, y);
+                        int n = -1;
                         for (int i = 0; i < Cafe.cafes.Count; i++)
                         {
-                            if (MyCordinate.GetDistanceTo(Cafe.cafes[i].CafesCoordinate) <= radius) { Console.WriteLine(Cafe.cafes[i]); }
+                            if (MyCordinate.GetDistanceTo(Cafe.cafes[i].CafesCoordinate) <= radius) { n += 1; Console.WriteLine(Cafe.cafes[i]); }
+
                         }
+                        if (n < 0)
+                        { Console.WriteLine("Cafe not found:"); }
+
+
+
                     }
                     else if (x == 3)
                     {
@@ -97,17 +112,23 @@ namespace CafeMaps
                     else if (x == 4)
                     {
                         Console.Write("Please enter the name of the cafe: ");
-                        int j;
+                        int j, n = -1;
                         string name = Console.ReadLine().ToLower().ToUpper();
                         for (j = 0; j < name.Length; j++)
                         {
+
                             Console.WriteLine(Cafe.cafes.Find(cc => cc.Name[j] == name[j]));
+
+
                             break;
+
+
                         }
                         foreach (WorkingDaysAndTimes day in Cafe.cafes[j].WorkTime)
                         {
                             Console.WriteLine("     " + day);
                         }
+
                     }
                     else if (x == 5)
                     {
@@ -211,25 +232,32 @@ namespace CafeMaps
                     }
                     else if (x == 9)
                     {
-                        foreach (Cafe item0 in Cafe.cafes) { Console.WriteLine(item0); }
+                        Cafe.SortCafe(Cafe.cafes);
+                        int i = 1;
+                        foreach (Cafe cafe in Cafe.cafes) { Console.WriteLine(i + " " + cafe); i += 1; }
                         Console.WriteLine("Select what you want cafe");
 
                         int y = int.Parse(Console.ReadLine());
-                        foreach (Review item in Cafe.cafes[y-1].Review) { Console.WriteLine(item); }
+                        foreach (Review item in Cafe.cafes[y - 1].Review) { Console.WriteLine(item); }
 
 
                     }
 
+
+
                     else break;
 
 
+
+                    k += 1;
+                    if (x == 9 || x == 3 || k >= 2) { CafeIntro(); }
                 }
 
-                catch (Exception x) { { Console.Write("You can not enter a string expression\n"); } }
+                catch (Exception x) { MessageBox.Show(x.Message.ToString(), x.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); Console.Write("You can not enter a string expression\n"); }
+
 
             }
         }
-
         private static void CafeIntro()
         {
             string path;

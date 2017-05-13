@@ -3,6 +3,7 @@ using System.Device.Location;
 using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Web.Script.Serialization;
 
 namespace CafeMaps
@@ -37,13 +38,14 @@ namespace CafeMaps
 
         public override string ToString()
         {
-            
-            return ID + " - " +
-                "Name: " + Name +
+
+            return  " - " +
+                " Name: " + Name +
                 " \n    Address: " + Address +
                 " \n    Latitude: " + CafesCoordinate.Latitude +
                 " \n    Longitude:" + CafesCoordinate.Longitude +
                 " \n    Rating: " + Rating;
+
         }
 
         public static string ToJson()
@@ -130,7 +132,7 @@ namespace CafeMaps
             cafes.Sort();
         }
 
-       
+
 
     }
 
