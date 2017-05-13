@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Cafe.cs" />
     <Compile Include="Review.cs" />
+    <Compile Include="SecureStringPass.cs" />
     <Compile Include="User.cs" />
     <Compile Include="WorkingDaysAndTimes.cs" />
     <Compile Include="Program.cs" />

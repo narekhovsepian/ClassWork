@@ -9,6 +9,7 @@ namespace CafeMaps
     {
         static void Main(string[] args)
         {
+
             int k = 0;
             Cafe.ReadCafeData();
             CafeIntro();
@@ -134,11 +135,15 @@ namespace CafeMaps
                     {
                         if (!User.IsLoggedin)
                         {
-                            Console.Write("Please enter your username: ");
+
+                            Console.Write("Please enter your UserName: ");
                             string username = Console.ReadLine();
-                            Console.Write("Please enter your password: ");
-                            string password = Console.ReadLine();
-                            User user = new User(username, password);
+
+                            Console.Write("Please enter your Password: ");
+                            SecureStringPass.GetPass();
+                            Console.WriteLine();
+
+                            User user = new User(username, SecureStringPass.pass);
                             user.LogIn();
                             if (!User.IsLoggedin)
                             {
