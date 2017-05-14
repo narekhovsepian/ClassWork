@@ -3,6 +3,7 @@ using System.Device.Location;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace CafeMaps
 {
@@ -155,7 +156,7 @@ namespace CafeMaps
                             SecureStringPass.GetPass();
                             Console.WriteLine();
 
-                            User user = new User(username, SecureStringPass.pass);
+                            User user = new User(Convert.ToString(Encryption.GetHashString(username)), Convert.ToString(Encryption.GetHashString(SecureStringPass.pass)));
                             user.LogIn();
                             if (!User.IsLoggedin)
                             {
@@ -267,8 +268,8 @@ namespace CafeMaps
 
 
 
-                    k += 1;
-                    if (x == 1 || x == 9 || x == 3 || k >= 2) { CafeIntro(); }
+
+                    if (x == 1 || x == 9 || x == 3 || x == 8) { CafeIntro(); }
                 }
 
                 catch (Exception x) { MessageBox.Show(x.Message.ToString(), x.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); Console.Write("You can not enter a string expression\n"); }
