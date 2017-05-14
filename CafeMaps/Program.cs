@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Device.Location;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace CafeMaps
@@ -65,17 +66,22 @@ namespace CafeMaps
                             Console.Write("Please enter the name of the cafe: ");
                             int j;
                             string name = Console.ReadLine().ToLower().ToUpper();
-                            Console.WriteLine("\n");
-                            for (j = 0; j < name.Length; j++)
+                            bool isDigit = name.Length == name.Where(c => char.IsDigit(c)).Count();
+                            if (isDigit == false)
                             {
-                                Console.WriteLine(Cafe.cafes.Find(cc => cc.Name[j] == name[j]));
-                                break;
+                                Console.WriteLine("\n");
+                                for (j = 0; j < name.Length; j++)
+                                {
+                                    Console.WriteLine(Cafe.cafes.Find(cc => cc.Name[j] == name[j]));
+                                    break;
+                                }
+                                foreach (WorkingDaysAndTimes day in Cafe.cafes[j].WorkTime)
+                                {
+                                    Console.WriteLine(day);
+                                }
+                                Console.WriteLine("\n\n");
                             }
-                            foreach (WorkingDaysAndTimes day in Cafe.cafes[j].WorkTime)
-                            {
-                                Console.WriteLine(day);
-                            }
-                            Console.WriteLine("\n\n");
+                            else Console.WriteLine("Please do not enter a number");
                         }
 
                         if (cki.Key == ConsoleKey.F2)
@@ -114,23 +120,29 @@ namespace CafeMaps
                     {
                         Console.Write("Please enter the name of the cafe: ");
                         int j, n = -1;
-                        string name = Console.ReadLine().ToLower().ToUpper();
-                        for (j = 0; j < name.Length; j++)
+                        string str = Console.ReadLine().ToLower().ToUpper();
+                        bool IsDigit = str.Length == str.Where(c => char.IsDigit(c)).Count();
+                        if (IsDigit == false)
                         {
+                            for (j = 0; j < str.Length; j++)
+                            {
 
-                            Console.WriteLine(Cafe.cafes.Find(cc => cc.Name[j] == name[j]));
+                                Console.WriteLine(Cafe.cafes.Find(cc => cc.Name[j] == str[j]));
 
 
-                            break;
+                                break;
 
 
+                            }
+
+                            foreach (WorkingDaysAndTimes day in Cafe.cafes[j].WorkTime)
+                            {
+                                Console.WriteLine("     " + day);
+                            }
                         }
-                        foreach (WorkingDaysAndTimes day in Cafe.cafes[j].WorkTime)
-                        {
-                            Console.WriteLine("     " + day);
-                        }
-
+                        else if (IsDigit == true) { Console.WriteLine("Please do not enter a number"); }
                     }
+
                     else if (x == 5)
                     {
                         if (!User.IsLoggedin)
@@ -190,6 +202,7 @@ namespace CafeMaps
                         }
 
                     }
+
 
                     else if (x == 6)
                     {
@@ -255,7 +268,7 @@ namespace CafeMaps
 
 
                     k += 1;
-                    if (x == 9 || x == 3 || k >= 2) { CafeIntro(); }
+                    if (x == 1 || x == 9 || x == 3 || k >= 2) { CafeIntro(); }
                 }
 
                 catch (Exception x) { MessageBox.Show(x.Message.ToString(), x.Source.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error); Console.Write("You can not enter a string expression\n"); }

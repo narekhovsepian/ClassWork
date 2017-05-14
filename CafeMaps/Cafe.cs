@@ -39,7 +39,7 @@ namespace CafeMaps
         public override string ToString()
         {
 
-            return  " - " +
+            return " - " +
                 " Name: " + Name +
                 " \n    Address: " + Address +
                 " \n    Latitude: " + CafesCoordinate.Latitude +
@@ -103,7 +103,7 @@ namespace CafeMaps
                         c.Review.Add(new Review(Convert.ToInt32(item2.CafeID), Convert.ToString(item2.UserID), Convert.ToInt32(item2.Rate), Convert.ToString(item2.Comment)));
                     }
                     if (countRate != 0)
-                        c.Rating = sumRate / countRate;
+                        c.Rating = Math.Round(sumRate / countRate, 1);
                     else
                         c.Rating = 0;
                     Cafe.cafes.Add(c);
