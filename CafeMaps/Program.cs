@@ -130,16 +130,16 @@ namespace CafeMaps
 
                                 Console.WriteLine(Cafe.cafes.Find(cc => cc.Name[j] == str[j]));
 
-
+                                foreach (WorkingDaysAndTimes day in Cafe.cafes[j].WorkTime)
+                                {
+                                    Console.WriteLine("     " + day);
+                                }
                                 break;
 
 
                             }
 
-                            foreach (WorkingDaysAndTimes day in Cafe.cafes[j].WorkTime)
-                            {
-                                Console.WriteLine("     " + day);
-                            }
+
                         }
                         else if (IsDigit == true) { Console.WriteLine("Please do not enter a number"); }
                     }
@@ -156,7 +156,7 @@ namespace CafeMaps
                             SecureStringPass.GetPass();
                             Console.WriteLine();
 
-                            User user = new User(Convert.ToString(Encryption.GetHashString(username)), Convert.ToString(Encryption.GetHashString(SecureStringPass.pass)));
+                            User user = new User(username, Convert.ToString(Encryption.GetHashString(SecureStringPass.pass)));
                             user.LogIn();
                             if (!User.IsLoggedin)
                             {
